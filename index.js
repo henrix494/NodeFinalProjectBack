@@ -9,8 +9,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 app.use(
   cors({
-    origin: "*",
-    credentials: false,
+    origin: "https://node-finalproject.vercel.app", // Allow requests from this origin
+    credentials: true, // Allow sending cookies across domains
   })
 );
 if (process.env.NODE_ENV !== "production") {
