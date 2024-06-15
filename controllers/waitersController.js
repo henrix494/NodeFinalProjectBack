@@ -38,11 +38,11 @@ export const waitersController = {
     }
   },
   addWaiter: async (req, res) => {
+    const { waiterName } = await req.body;
+    console.log(waiterName);
     try {
-      const addedWaiter = await waiterServices.addWaiter();
-      res.json(
-        `Waiter ${addedTable.dataValues.waiterName} was added succesfully!`
-      );
+      const addedWaiter = await waiterServices.addWaiter(waiterName);
+      res.json(`Waiter ${waiterName} was added succesfully!`);
     } catch (error) {
       console.log(error);
       res.json(`Waiter could not be added.`);

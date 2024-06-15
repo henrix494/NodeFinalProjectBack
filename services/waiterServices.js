@@ -35,5 +35,15 @@ export const waiterServices = {
     const deletedWaiter = await waiters.destroy({ where: { id: id } });
     return `Waiter ${deletedWaiter.dataValues.waiterName} was deleted successfully!`;
   },
-  removeWaiterFromTable: async (id) => {},
+  addWaiter: async (name) => {
+    try {
+      const addWaiter = await waiters.create({
+        waiterName: name,
+      });
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      return { success: false };
+    }
+  },
 };
