@@ -36,6 +36,6 @@ app.listen(port, () => {
   console.log(`App is open on Port: ${port}`);
 });
 app.get("/", (req, res) => res.send("Express on Vercel"));
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ alter: true }).then(() => {
   console.log("Database synchronized");
 });
