@@ -9,7 +9,8 @@ import bodyParser from "body-parser";
 import cors from "cors";
 app.use(
   cors({
-    origin: "https://node-finalproject-front.vercel.app/",
+    origin: "*",
+    credentials: false,
   })
 );
 if (process.env.NODE_ENV !== "production") {
