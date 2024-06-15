@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express from "express";
 import sequelize from "./dal/db.js";
 import models from "./dal/models/models.js";
@@ -6,6 +7,11 @@ import tablesRouter from "./router/tablesRouter.js";
 import waitersRouter from "./router/waitersRouter.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({
+    path: ".env",
+  });
+}
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
