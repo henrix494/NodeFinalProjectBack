@@ -18,7 +18,7 @@ INSERT INTO tables (availability) VALUES (true),
 (true);
 
 
-insert into meals (meal_name, price)
+insert into meals (mealName, price)
 values ("Pasta Bolognese", 59.90),
 ("Arenchini", 34.50),
 ("Pizza Margerita", 30.00),
@@ -29,3 +29,4 @@ values ("Pasta Bolognese", 59.90),
 ("Coca Cola", 12.00),
 ("Sprite", 12.00),
 ("Mineral Water", 10.00)
+

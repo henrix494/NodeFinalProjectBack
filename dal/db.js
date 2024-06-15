@@ -1,10 +1,25 @@
-import { Sequelize, DataTypes } from "sequelize";
-import mysql2 from "mysql2"; // Needed to fix sequelize issues with WebPack
-const sequelize = new Sequelize("restauranti", "root", "root", {
-  host: "localhost",
-  dialect: "mysql",
-  dialectModule: mysql2,
-  logging: false,
-});
+// src/config/database.ts
+import dotenv from "dotenv";
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({
+    path: "../.env",
+  });
+}
+
+import { Sequelize } from "sequelize";
+import { devConfig } from "./configDev.js";
+import { ProdConfig } from "./configProd.js";
+
+const config = process.env.NODE_ENV === "production" ? ProdConfig : devConfig;
+
+const sequelize = new Sequelize(config);
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
+  });
 
 export default sequelize;
