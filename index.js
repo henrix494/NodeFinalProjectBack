@@ -7,6 +7,8 @@ import tablesRouter from "./router/tablesRouter.js";
 import waitersRouter from "./router/waitersRouter.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+const app = express();
+
 app.use(
   cors({
     origin: "https://node-finalproject.vercel.app", // Allow requests from this origin
@@ -18,7 +20,6 @@ if (process.env.NODE_ENV !== "production") {
     path: ".env",
   });
 }
-const app = express();
 
 app.use(bodyParser.json());
 app.use("/tables", tablesRouter);
