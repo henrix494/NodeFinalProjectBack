@@ -2,13 +2,10 @@ import * as tedious from "tedious";
 
 export const ProdConfig = {
   host: process.env.DB_HOST,
-  dialect: "mssql",
-
+  dialect: "mysql",
   username: process.env.POSTGRES_USER,
   password: process.env.DB_PASSWORD,
-
   database: process.env.DB_DATABASE,
-
   dialectModule: tedious,
   dialectOptions: {
     encrypt: true,
