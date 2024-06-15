@@ -7,13 +7,18 @@ import tablesRouter from "./router/tablesRouter.js";
 import waitersRouter from "./router/waitersRouter.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 if (process.env.NODE_ENV !== "production") {
   dotenv.config({
     path: ".env",
   });
 }
 const app = express();
-app.use(cors());
+
 app.use(bodyParser.json());
 app.use("/tables", tablesRouter);
 app.use("/waiters", waitersRouter);
