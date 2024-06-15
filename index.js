@@ -9,12 +9,19 @@ import bodyParser from "body-parser";
 import cors from "cors";
 const app = express();
 
-app.use(
-  cors({
-    origin: "https://node-finalproject.vercel.app", // Allow requests from this origin
-    credentials: true, // Allow sending cookies across domains
-  })
-);
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,Content-Type,Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 if (process.env.NODE_ENV !== "production") {
   dotenv.config({
     path: ".env",
