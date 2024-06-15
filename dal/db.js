@@ -10,7 +10,10 @@ import { Sequelize } from "sequelize";
 import { devConfig } from "./configDev.js";
 import { ProdConfig } from "./configProd.js";
 
-const config = process.env.NODE_ENV === "production" ? ProdConfig : devConfig;
+const config =
+  process.env.NODE_ENV === "production"
+    ? process.env.POSTGRES_PRISMA_URL
+    : devConfig;
 
 const sequelize = new Sequelize(config);
 sequelize
