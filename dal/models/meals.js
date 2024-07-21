@@ -10,7 +10,7 @@ const meals = sequelize.define(
       allowNull: false,
       autoIncrement: true,
     },
-    mealName: {
+    name: {
       type: DataTypes.STRING,
     },
     price: {
