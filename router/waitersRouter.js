@@ -4,9 +4,9 @@ import { waitersController } from "../controllers/waitersController.js";
 const router = express.Router();
 
 router.post("/AddTableToWaiter", waitersController.addWaiterToTable);
-router.get("/", waitersController.getAllWaiters);
+router.get("/waiters", waitersController.getAllWaiters);
 router.get("/getWaiterById/:id", waitersController.getWaiterById);
 router.delete("/deleteWaiterById/:id", waitersController.deleteWaiterById);
 router.post("/addWaiter", waitersController.addWaiter);
-
+router.post("/deleteWFromTable", waitersController.removeWFromTable);
 export default router;

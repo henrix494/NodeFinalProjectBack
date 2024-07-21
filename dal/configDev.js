@@ -1,12 +1,12 @@
 export const devConfig = {
   host: "localhost",
   dialect: "mysql",
+  logging: false,
   port: 3306,
   username: "root",
   password: "root",
   database: "restauranti",
   dialectOptions: {
-    encrypt: true,
     options: {
       requestTimeout: 300000,
     },

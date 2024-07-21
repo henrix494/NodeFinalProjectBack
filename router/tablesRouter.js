@@ -7,5 +7,5 @@ router.get("/", tablesController.getAllTables);
 router.get("/getTableById/:id", tablesController.getTableById);
 router.delete("/deleTableById/:id", tablesController.deleteTableById);
 router.post("/addTable", tablesController.addTable);
-
+router.post("/makeTableAvailable", tablesController.makeTableAvailable);
 export default router;

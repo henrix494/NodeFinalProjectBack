@@ -3,7 +3,6 @@ export const tablesController = {
   getAllTables: async (req, res) => {
     try {
       const numberOfTables = await tableServices.getAllTables();
-      console.log(numberOfTables);
       return res.json(numberOfTables);
     } catch (error) {
       console.log(error);
@@ -35,6 +34,15 @@ export const tablesController = {
       res.json(deletedTable);
     } catch (error) {
       res.json(`Table could not be deleted.`);
+    }
+  },
+  makeTableAvailable: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const makeAVL = await tableServices.makeAVL(id);
+      res.json(makeAVL);
+    } catch (error) {
+      console.log(error);
     }
   },
 };

@@ -1,5 +1,6 @@
 import sequelize from "../db.js";
 import { DataTypes } from "sequelize";
+import orders from "./orders.js";
 
 const tables = sequelize.define(
   "tables",
@@ -19,5 +20,9 @@ const tables = sequelize.define(
     timestamps: false,
   }
 );
+
+// Define the association
+tables.hasOne(orders, { foreignKey: "tableId" });
+orders.belongsTo(tables, { foreignKey: "tableId" });
 
 export default tables;

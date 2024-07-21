@@ -21,8 +21,10 @@ export const ordersController = {
   },
   addOrder: async (req, res) => {
     try {
-      const addedOrder = await orderServices.addOrder();
-      res.json(`Order ${addedOrder.dataValues.id} was added succesfully!`);
+      const { id } = req.params;
+      console.log(id);
+      const addedOrder = await orderServices.addOrder(id);
+      res.json(`Order ${id} was added succesfully!`);
     } catch (error) {
       console.log(error);
       res.json(`Order could not be added.`);
@@ -35,6 +37,25 @@ export const ordersController = {
       res.json(`Order ${deletedOrder.dataValues.id} was removed.`);
     } catch (error) {
       res.json(`Order could not be deleted.`);
+    }
+  },
+  startOrder: async (req, res) => {
+    try {
+      const { id } = req.params;
+      console.log(id);
+      const orderStarted = await orderServices.startOrderToTable(id);
+      res.json(`order to table ${id} has started`);
+    } catch (error) {
+      console.log(error);
+    }
+  },
+  endOrder: async (req, res) => {
+    try {
+      const id = req.params.id;
+      const endOrder = await orderServices.endOrder(id);
+      res.json("hello");
+    } catch (error) {
+      console.log(error);
     }
   },
 };

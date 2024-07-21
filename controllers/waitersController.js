@@ -39,7 +39,6 @@ export const waitersController = {
   },
   addWaiter: async (req, res) => {
     const { waiterName } = await req.body;
-    console.log(waiterName);
     try {
       const addedWaiter = await waiterServices.addWaiter(waiterName);
       res.json(`Waiter ${waiterName} was added succesfully!`);
@@ -55,6 +54,18 @@ export const waitersController = {
       res.json(`Waiter ${deletedWaiter.dataValues.waiterName} was removed.`);
     } catch (error) {
       res.json(`Table could not be deleted.`);
+    }
+  },
+  removeWFromTable: async (req, res) => {
+    try {
+      const { tableId, waiterId } = await req.body;
+      const deleteWFromTable = await waiterServices.deleteFromJoinTable(
+        tableId,
+        waiterId
+      );
+      res.json(`Waiter ${waiterId} delete from ${tableId}`);
+    } catch (error) {
+      console.log(error);
     }
   },
 };

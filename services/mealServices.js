@@ -5,7 +5,7 @@ export const mealServices = {
   getAllMeals: async () => {
     try {
       const { count, rows } = await meals.findAndCountAll();
-      return { count, rows };
+      return rows;
     } catch (error) {
       console.log(error);
       return error;
@@ -37,14 +37,19 @@ export const mealServices = {
       console.log(error);
     }
   },
+  addMeal: async (name) => {
+    try {
+      const addMeal = await meals.create({
+        mealName: name,
+      });
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      return { success: false };
+    }
+  },
   deleteMealById: async (id) => {
     const deletedMeal = await meals.destroy({ where: { id: id } });
     return `Meal ${deletedMeal.dataValues.mealName} was deleted from menu successfully!`;
-  },
-  deleteFromTable: async (orderId, mealId) => {
-    const deletedMeal = await orders.destroy({
-      where: { orderId: orderId },
-      where: {},
-    });
   },
 };

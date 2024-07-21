@@ -11,9 +11,12 @@ const orders = sequelize.define(
       allowNull: false,
       autoIncrement: true,
     },
+    isDone: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   },
   { timestamps: false }
 );
 
-orders.hasMany(meals);
 export default orders;

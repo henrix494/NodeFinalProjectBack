@@ -28,5 +28,5 @@ values ("Pasta Bolognese", 59.90),
 ("White Wine", 29.00),
 ("Coca Cola", 12.00),
 ("Sprite", 12.00),
-("Mineral Water", 10.00)
+("Mineral Water", 10.00);
 

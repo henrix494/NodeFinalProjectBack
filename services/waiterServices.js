@@ -23,7 +23,6 @@ export const waiterServices = {
   addTableToWaiter: async (waiterId, tableId) => {
     try {
       await TableWaiter.create({ waiterId, tableId });
-      await tables.update({ availability: false }, { where: { id: tableId } });
 
       return { success: true };
     } catch (error) {
@@ -40,6 +39,34 @@ export const waiterServices = {
       const addWaiter = await waiters.create({
         waiterName: name,
       });
+      return { success: true };
+    } catch (error) {
+      console.log(error);
+      return { success: false };
+    }
+  },
+  deleteFromJoinTable: async (tableId, waiterId) => {
+    try {
+      const delData = await TableWaiter.destroy({
+        where: {
+          tableId: tableId,
+          waiterId: waiterId,
+        },
+      });
+      const serachWaiter = await TableWaiter.findAll({
+        where: {
+          tableId: tableId,
+        },
+      });
+      if (serachWaiter.length === 0) {
+        const test = await tables.update(
+          {
+            availability: true,
+          },
+          { where: { id: tableId } }
+        );
+      }
+      console.log(`${serachWaiter} hhh`);
       return { success: true };
     } catch (error) {
       console.log(error);
