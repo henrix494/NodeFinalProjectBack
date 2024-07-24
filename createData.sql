@@ -1,24 +1,7 @@
 use restauranti
 
-INSERT INTO waiters(waiterName)
-VALUES ('John'),
-       ('Sarah'),
-       ('Michael'),
-       ('Emily')
 
-INSERT INTO tables (availability) VALUES (true),
-(true),
-(true),
-(true),
-(true),
-(true),
-(true),
-(true),
-(true),
-(true);
-
-
-insert into meals (mealName, price)
+insert into meals (name, price)
 values ("Pasta Bolognese", 59.90),
 ("Arenchini", 34.50),
 ("Pizza Margerita", 30.00),
